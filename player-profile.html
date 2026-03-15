@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;900&display=swap" rel="stylesheet">
 </head>
-<body data-page="index">
+<body data-page="profile">
 
     <header class="navbar">
         <div class="logo-container">
@@ -23,7 +23,7 @@
         </button>
 
         <nav class="nav-links" aria-label="Main navigation">
-            <a href="index.html" class="active" data-i18n="nav.home">Главная</a>
+            <a href="index.html" data-i18n="nav.home">Главная</a>
             <a href="roster.html" data-i18n="nav.roster">Состав</a>
             <a href="news.html" data-i18n="nav.news">Новости</a>
             <a href="about.html" data-i18n="nav.about">О команде</a>
@@ -33,120 +33,114 @@
         <button class="lang-switch" type="button" aria-label="Toggle language">RU</button>
     </header>
 
-    <main>
-        <section class="hero">
-            <div class="hero-content">
-                <img src="expoologo.png" alt="EXPOO" class="hero-bg-logo">
-                <h1 class="main-title">TEAM EXPOO</h1>
-                <p class="subtitle" data-i18n="home.hero.subtitle">Extremely Powerful Organization</p>
+    <main class="individual-profile">
+        <section class="profile-header-section">
+            <div class="profile-header-grid">
+                <div class="profile-photo-large">
+                    <img src="images/Sw1kBOgdan.png" alt="Player">
+                </div>
+                <div class="profile-bio-box">
+                    <span class="p-role">ROLE: IGL</span>
+                    <h1 class="p-huge-nick">SW1K</h1>
+                    <p class="p-realname">Богдан "SW1K" Важов</p>
+                    
+                    <div class="bio-text">
+                        <h3 data-i18n="profile.section.bio">BIOGRAPHY</h3>
+                        <p>AGE:&emsp; 16 <br> COUNTRY:&emsp; RUSSIA <br></p>
+                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Fuga quibusdam sequi tenetur aliquam voluptates sunt, non iste voluptatibus quis saepe atque exercitationem natus perferendis vero molestiae eveniet a cupiditate reiciendis.</p> 
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="gear-settings-section">
+            <div class="gs-grid">
                 
-                <div class="match-ticker">
-                    <span class="ticker-label">NEXT MATCH:</span>
-                    <span class="ticker-teams">TE vs BMPM</span>
-                    <span class="ticker-time">MARCH 20</span>
+                <div class="hardware-box">
+                    <h3 class="box-title" data-i18n="profile.section.gear">GAMING GEAR</h3>
+                    <ul class="gear-list">
+                        <li>
+                            <span class="gear-type">MOUSE</span>
+                            <span class="gear-model">VGN VXE R1</span>
+                        </li>
+                        <li>
+                            <span class="gear-type">KEYBOARD</span>
+                            <span class="gear-model">REDSQUARE KEYROX TKL</span>
+                        </li>
+                        <li>
+                            <span class="gear-type">HEADSET</span>
+                            <span class="gear-model">MOONDROP CHU II</span>
+                        </li>
+                        <li>
+                            <span class="gear-type">MONITOR</span>
+                            <span class="gear-model">REDMI G24 (180Hz)</span>
+                        </li>
+                        <li>
+                            <span class="gear-type">MOUSEPAD</span>
+                            <span class="gear-model">NO NAME BIG</span>
+                        </li>
+                    </ul>
                 </div>
+
+                <div class="settings-box">
+                    <h3 class="box-title" data-i18n="profile.section.settings">IN-GAME SETTINGS</h3>
+                    
+                    <div class="settings-category">
+                        <h4>MOUSE SETTINGS</h4>
+                        <div class="settings-row">
+                            <div class="set-item"><span>DPI</span><strong>1100</strong></div>
+                            <div class="set-item"><span>SENS</span><strong>1.25</strong></div>
+                            <div class="set-item"><span>eDPI</span><strong>1375</strong></div>
+                            <div class="set-item"><span>HZ</span><strong>1000</strong></div>
+                        </div>
+                    </div>
+
+                    <div class="settings-category">
+                        <h4>VIDEO SETTINGS</h4>
+                        <div class="settings-row">
+                            <div class="set-item"><span>RESOLUTION</span><strong>1280x960</strong></div>
+                            <div class="set-item"><span>ASPECT RATIO</span><strong>4:3 (Stretched)</strong></div>
+                        </div>
+                    </div>
+
+                    <div class="settings-category">
+                        <h4>CROSSHAIR CODE</h4>
+                        <div class="crosshair-code">
+                            CSGO-KoKYK-eL4FP-Tj6db-Y9pAt-bciaB
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="pc-specs-box">
+                    <h3 class="box-title" data-i18n="profile.section.specs">PC SPECS</h3>
+                    <ul class="gear-list">
+                        <li>
+                            <span class="gear-type">CPU</span>
+                            <span class="gear-model">INTEL</span>
+                        </li>
+                        <li>
+                            <span class="gear-type">GPU</span>
+                            <span class="gear-model">NVIDIA GTX 1650</span>
+                        </li>
+                        <li>
+                            <span class="gear-type">RAM</span>
+                            <span class="gear-model">16GB DDR4 3200MHz</span>
+                        </li>
+                        <li>
+                            <span class="gear-type">STORAGE</span>
+                            <span class="gear-model">1TB SSD</span>
+                        </li>
+                        <li>
+                            <span class="gear-type">MOTHERBOARD</span>
+                            <span class="gear-model">?</span>
+                        </li>
+                    </ul>
+                </div>
+                
             </div>
+            
         </section>
-
-        <section class="roster-section">
-            <h2 class="section-title" data-i18n="home.section.roster">ACTIVE ROSTER</h2>
-            <div class="roster-container">
-                <div class="player-card">
-                    <div class="player-img-container">
-                        <img src="images/TimofeyShintrix.png" alt="Player Silhouette" class="player-straight-img">
-                    </div>
-                    <div class="player-overlay"></div>
-                    <div class="player-info">
-                        <span class="player-role">AWP</span>
-                        <span class="player-nick">SHINTRIX</span>
-                    </div>
-                </div>
-                <div class="player-card">
-                    <div class="player-img-container">
-                        <img src="images/ZELOFA1Nvlad.png" alt="Player Silhouette" class="player-straight-img">
-                    </div>
-                    <div class="player-overlay"></div>
-                    <div class="player-info">
-                        <span class="player-role">LURKER</span>
-                        <span class="player-nick">ZELOFA1N</span>
-                    </div>
-                </div>
-                <div class="player-card">
-                    <div class="player-img-container">
-                        <img src="images/KAZAKH.png" alt="Player Silhouette" class="player-straight-img">
-                    </div>
-                    <div class="player-overlay"></div>
-                    <div class="player-info">
-                        <span class="player-role">SUPPORT</span>
-                        <span class="player-nick">DORTIZ</span>
-                    </div>
-                </div>
-                <div class="player-card">
-                    <div class="player-img-container">
-                        <img src="images/Sw1kBOgdan.png" alt="Player Silhouette" class="player-straight-img">
-                    </div>
-                    <div class="player-overlay"></div>
-                    <div class="player-info">
-                        <span class="player-role">IGL</span>
-                        <span class="player-nick">SW1K</span>
-                    </div>
-                </div>
-                <div class="player-card">
-                    <div class="player-img-container">
-                        <img src="images/DaniilNextTime.png" alt="Player Silhouette" class="player-straight-img">
-                    </div>
-                    <div class="player-overlay"></div>
-                    <div class="player-info">
-                        <span class="player-role">ENTRY</span>
-                        <span class="player-nick">NEXT_TIME</span>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section class="achievements-section">
-            <h2 class="section-title" data-i18n="home.section.achievements">ACHIEVEMENTS</h2>
-            <div class="achievements-container">
-        
-        <div class="achievement-item silver">
-            <div class="ach-rank">02</div>
-            <div class="ach-info">
-                <h3 class="ach-title">Blasty Pro League 2</h3>
-                <p class="ach-place">2nd Place</p>
-            </div>
-            <div class="ach-year">2026</div>
-        </div>
-
-        <div class="achievement-item">
-            <div class="ach-rank">3-4</div>
-            <div class="ach-info">
-                <h3 class="ach-title">BLASTY OPEN WINTER</h3>
-                <p class="ach-place">3-4th Place</p>
-            </div>
-            <div class="ach-year">2026</div>
-        </div>
-
-        <div class="achievement-item">
-            <div class="ach-rank">3-4</div>
-            <div class="ach-info">
-                <h3 class="ach-title">TABURETKA CUP</h3>
-                <p class="ach-place">3-4th Place</p>
-            </div>
-            <div class="ach-year">2026</div>
-        </div>
-
-        <div class="achievement-item">
-            <div class="ach-rank">3-4</div>
-            <div class="ach-info">
-                <h3 class="ach-title">RAZE CUP SEASON 5</h3>
-                <p class="ach-place">3-4th Place</p>
-            </div>
-            <div class="ach-year">2026</div>
-        </div>
-
-    </div>
-    </section>
-
     </main>
 
     <footer class="footer">

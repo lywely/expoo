@@ -8,74 +8,54 @@
     <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;900&display=swap" rel="stylesheet">
 </head>
-<body>
+<body data-page="news">
 
     <header class="navbar">
         <div class="logo-container">
             <img src="images/expoologo.png" alt="Team Expoo" class="header-logo">
             <span class="logo-text">EXPOO</span>
         </div>
-        <nav class="nav-links">
-            <a href="index.html">Главная</a>
-            <a href="roster.html">Состав</a>
-            <a href="news.html">Новости</a>
-            <a href="about.html" class="active">О команде</a>
+
+        <button class="menu-toggle" aria-label="Toggle navigation">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+
+        <nav class="nav-links" aria-label="Main navigation">
+            <a href="index.html" data-i18n="nav.home">Главная</a>
+            <a href="roster.html" data-i18n="nav.roster">Состав</a>
+            <a href="news.html" class="active" data-i18n="nav.news">Новости</a>
+            <a href="about.html" data-i18n="nav.about">О команде</a>
+            <a href="contacts.html" data-i18n="nav.contacts">Контакты</a>
         </nav>
-        <div class="lang-switch">RU</div>
+
+        <button class="lang-switch" type="button" aria-label="Toggle language">RU</button>
     </header>
         
         <main class="news-page">
     <section class="page-hero">
-        <h1 class="page-title">EXPOO NEWS</h1>
-        <p class="page-subtitle">НОВОСТИ TEAM EXPOO</p>
+        <h1 class="page-title" data-i18n="news.hero.title">EXPOO NEWS</h1>
+        <p class="page-subtitle" data-i18n="news.hero.subtitle">НОВОСТИ TEAM EXPOO</p>
     </section>
 
-        <section class="news-container">
-        <article class="news-featured">
-            <div class="news-img-wrap">
-                <img src="https://media.discordapp.net/attachments/859329714748129342/1481984054961246330/IMG_20260313_165421_302.jpg?ex=69b54cb4&is=69b3fb34&hm=28b34947a58d1869edcfc2ee72d6f92893f304585abd6754bfa7c85c63409b8a&=&format=webp" alt="Win">
-            </div>
-            <div class="news-content">
-                <span class="news-tag">TOURNAMENT</span>
-                <h2>TEAM EXPOO ПРИМУТ УЧАСТИЕ НА RAZE CUP SEASON 6</h2>
-                <p>Первая игра будет против<br> Echofall Ac</p>
-                <div class="news-footer">
-                    <span class="news-date">12.03.2026</span>
-                    <a href="#" class="read-more">ЧИТАТЬ ПОЛНОСТЬЮ →</a>
-                </div>
-            </div>
-        </article>
+        <section class="news-container reveal">
+            <div id="news-featured" class="news-featured-wrapper" aria-label="Featured news"></div>
 
-        <div class="news-grid">
-            <article class="news-card">
-                <div class="news-card-img"><img src="https://media.discordapp.net/attachments/859329714748129342/1481985361818419361/IMG_20260313_170017_706.jpg?ex=69b54dec&is=69b3fc6c&hm=0cbeed9f2304d84ea1376f6afc1f98b2455e7f5f5edc67cbbc9aee40b0c5a553&=&format=webp" alt=""></div>
-                <div class="news-card-body">
-                    <span class="news-tag">MATCH</span>
-                    <h3>TE Проигрывают WORTEX</h3>
-                    <p>Team Expoo проигрывают WORTEX Team со счетом 13:8...</p>
-                    <span class="news-date">10.03.2026</span>
+            <div class="news-grid" id="news-grid" aria-label="News list"></div>
+            <noscript>
+                <div class="news-fallback">
+                    <p>Для просмотра новостей требуется JavaScript. Пожалуйста, включите его в настройках браузера.</p>
                 </div>
-            </article>
-            <article class="news-card">
-                <div class="news-card-img"><img src="https://media.discordapp.net/attachments/859329714748129342/1481985528697196615/IMG_20260313_170105_745.jpg?ex=69b54e14&is=69b3fc94&hm=39f19d1a3783da2619fd989ed30482ee7e74571cad9b9a50a6e18cd8c8b3b415&=&format=webp" alt=""></div>
-                <div class="news-card-body">
-                    <span class="news-tag">MATCH</span>
-                    <h3>TE Проигрывают</h3>
-                    <p>Team Expoo опять проигрывают кому-то...</p>
-                    <span class="news-date">10.03.2026</span>
-                </div>
-            </article>
-            <article class="news-card">
-                <div class="news-card-img"><img src="https://media.discordapp.net/attachments/859329714748129342/1481985529661755453/IMG_20260313_170111_333.jpg?ex=69b54e14&is=69b3fc94&hm=bc7f204e8ff7a9fa7befab2089960029fcd1f964632301610a54834ec2f97578&=&format=webp&width=777&height=753" alt=""></div>
-                <div class="news-card-body">
-                    <span class="news-tag">MATCH</span>
-                    <h3>TE Выигрывают Cancers</h3>
-                    <p>Team Expoo выигрывают Cancers со счетом 2:0 и выходят в полуфинал.</p>
-                    <span class="news-date">10.03.2026</span>
-                </div>
-            </article>
-        </div>
+            </noscript>
 
+            <div id="news-modal" class="news-modal hidden" role="dialog" aria-modal="true">
+                <div class="news-modal-backdrop" data-close="true"></div>
+                <div class="news-modal-content">
+                    <button class="news-modal-close" data-close="true" aria-label="Close">×</button>
+                    <div class="news-modal-body" id="news-modal-body"></div>
+                </div>
+            </div>
         </section>
         </main>
 
@@ -97,7 +77,7 @@
             <div class="footer-links">
                 <h4>EXPOO</h4>
                 <a href="about.html">О команде</a>
-                <a href="#">Контакты</a>
+                <a href="contacts.html">Контакты</a>
                 <a href="index.html">Главная</a>
                 <a href="roster.html">Состав</a>
             </div>
@@ -117,7 +97,7 @@
                             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640"><!--!Font Awesome Free v7.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2026 Fonticons, Inc.--><path d="M455.4 167.5L416.8 167.5L416.8 277.2L455.4 277.2L455.4 167.5zM349.2 167L310.6 167L310.6 276.8L349.2 276.8L349.2 167zM185 64L88.5 155.4L88.5 484.6L204.3 484.6L204.3 576L300.8 484.6L378.1 484.6L551.9 320L551.9 64L185 64zM513.3 301.8L436.1 374.9L358.9 374.9L291.3 438.9L291.3 374.9L204.4 374.9L204.4 100.6L513.3 100.6L513.3 301.8z"/></svg>
                         </a>
 
-                        <a href="#" class="social-icon-link" title="Steam">
+                        <a href="https://steamcommunity.com/groups/TeamExpoo" class="social-icon-link" title="Steam">
                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640"><!--!Font Awesome Free v7.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2026 Fonticons, Inc.--><path d="M568 320C568 457 456.8 568 319.6 568C205.8 568 110 491.7 80.6 387.6L175.8 426.9C182.2 459 210.7 483.3 244.7 483.3C283.9 483.3 316.6 450.9 314.9 409.8L399.4 349.6C451.5 350.9 495.2 308.7 495.2 256.1C495.2 204.5 453.2 162.6 401.5 162.6C349.8 162.6 307.8 204.6 307.8 256.1L307.8 257.3L248.6 343C233.1 342.1 217.9 346.4 205.1 355.1L72 300.1C82.2 172.4 189.1 72 319.6 72C456.8 72 568 183 568 320zM227.7 448.3L197.2 435.7C202.8 447.3 212.5 456.5 224.4 461.5C251.3 472.7 282.2 459.9 293.4 433.1C298.8 420.1 298.9 405.8 293.5 392.8C288.1 379.8 278 369.6 265 364.2C252.1 358.8 238.3 359 226.1 363.6L257.6 376.6C277.4 384.8 286.8 407.5 278.5 427.3C270.2 447.2 247.5 456.5 227.7 448.3zM401.5 193.8C435.9 193.8 463.8 221.7 463.8 256.1C463.8 290.5 435.9 318.4 401.5 318.4C367.1 318.4 339.2 290.5 339.2 256.1C339.2 221.7 367.1 193.8 401.5 193.8zM401.6 302.8C427.4 302.8 448.4 281.8 448.4 256C448.4 230.2 427.4 209.2 401.6 209.2C375.8 209.2 354.8 230.2 354.8 256C354.8 281.8 375.8 302.8 401.6 302.8z"/></svg>
                         </a>
                         
@@ -134,5 +114,6 @@
         </div>
     </footer>
 
+    <script src="script.js" defer></script>
 </body>
 </html>
