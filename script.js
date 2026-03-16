@@ -163,6 +163,37 @@ const newsData = [
   }
 ];
 
+// HIGHLIGHTS DATA
+const highlightsData = [
+  {
+    id: 'clutch-1v3-raze',
+    title: 'SW1K 1v3 клатч на Anubis',
+    game: 'CS2 — RAZE CUP S5',
+    date: '2026-03-10',
+    duration: '0:34',
+    platform: 'youtube',
+    url: 'https://youtube.com/shorts/nXwFDnKYyzc?si=X0YGkyRCygQFIYsl' // TODO: замени на реальный URL
+  },
+  {
+    id: 'ace-mirage',
+    title: 'SHINTRIX AWP ACE на Mirage',
+    game: 'CS2 — LTL LOW CUP',
+    date: '2026-03-14',
+    duration: '0:47',
+    platform: 'youtube',
+    url: 'https://youtu.be/dQw4w9WgXcQ?si=iFikMwON1W_4sdjO'
+  },
+  {
+    id: 'entry-rush',
+    title: 'NEXT_TIME — быстрый выход B',
+    game: 'CS2 — MIX CUP',
+    date: '2026-02-28',
+    duration: '0:29',
+    platform: 'youtube',
+    url: 'https://youtu.be/8vQS5DZZ38k?si=B4ZMljUOJ4RuKJIF'
+  }
+];
+
 function getPlaceholderImage() {
   return 'data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%22200%22 height=%22120%22 viewBox=%220 0 200 120%22%3E%3Crect width=%22200%22 height=%22120%22 fill=%22%23030b14%22/%3E%3Ctext x=%2210%22 y=%2268%22 fill=%22%2388b6ff%22 font-family=%22Segoe UI%22 font-size=%2214%22%3ENo image%3C/text%3E%3C/svg%3E';
 }
@@ -266,18 +297,29 @@ function closeNewsModal() {
 }
 
 function initModalLogic() {
-  const modal = document.getElementById('news-modal');
-  if (!modal) return;
+  const newsModal = document.getElementById('news-modal');
+  const highlightModal = document.getElementById('highlight-modal');
 
-  modal.addEventListener('click', event => {
-    if (event.target.closest('[data-close]')) {
-      closeNewsModal();
-    }
-  });
+  if (newsModal) {
+    newsModal.addEventListener('click', event => {
+      if (event.target.closest('[data-close]')) {
+        closeNewsModal();
+      }
+    });
+  }
+
+  if (highlightModal) {
+    highlightModal.addEventListener('click', event => {
+      if (event.target.closest('[data-close]')) {
+        closeHighlightModal();
+      }
+    });
+  }
 
   document.addEventListener('keydown', event => {
     if (event.key === 'Escape') {
       closeNewsModal();
+      closeHighlightModal();
     }
   });
 }
@@ -302,6 +344,17 @@ function initReveal() {
   const sections = document.querySelectorAll('section');
   if (!sections.length) return;
 
+  // На мобильных устройствах не прячем секции, сразу показываем их без анимации
+  const isMobile = window.matchMedia('(max-width: 768px)').matches;
+
+  if (isMobile) {
+    sections.forEach(section => {
+      section.classList.remove('reveal');
+      section.classList.add('active');
+    });
+    return;
+  }
+
   sections.forEach(section => section.classList.add('reveal'));
 
   const observer = new IntersectionObserver(
@@ -319,6 +372,405 @@ function initReveal() {
   sections.forEach(section => observer.observe(section));
 }
 
+// HIGHLIGHTS HELPERS + RENDER
+function getYouTubeId(url) {
+  if (!url) return null;
+
+  const patterns = [
+    /youtube\.com\/watch\?v=([^&]+)/,
+    /youtu\.be\/([^?]+)/,
+    /youtube\.com\/shorts\/([^?]+)/,
+    /youtube\.com\/embed\/([^?]+)/,
+    /youtube\.com\/live\/([^?]+)/
+  ];
+
+  for (const pattern of patterns) {
+    const match = url.match(pattern);
+    if (match && match[1]) {
+      return match[1];
+    }
+  }
+
+  return null;
+}
+
+function getHighlightThumb(item) {
+  if (item.platform === 'youtube') {
+    const id = getYouTubeId(item.url);
+    if (id) {
+      return `https://img.youtube.com/vi/${id}/hqdefault.jpg`;
+    }
+  }
+  return getPlaceholderImage();
+}
+
+function renderHighlights() {
+  const grid = document.getElementById('highlights-grid');
+  if (!grid || !highlightsData.length) return;
+
+  grid.innerHTML = highlightsData.map(item => {
+    const thumb = getHighlightThumb(item);
+
+    return `
+      <article class="highlight-card" data-highlight-id="${item.id}">
+        <div class="highlight-thumb">
+          <img src="${thumb}" alt="${item.title}">
+        </div>
+        <div class="highlight-meta">
+          <span class="highlight-game">${item.game}</span>
+          <h3 class="highlight-title">${item.title}</h3>
+          <div class="highlight-info">
+            <span>${item.duration}</span>
+            <span>${item.date}</span>
+          </div>
+          <a class="highlight-watch" href="${item.url}" target="_blank" rel="noopener">
+            Смотреть на ${item.platform === 'youtube' ? 'YouTube' : 'платформе'} →
+          </a>
+        </div>
+      </article>
+    `;
+  }).join('');
+
+  grid.querySelectorAll('[data-highlight-id]').forEach(card => {
+    card.addEventListener('click', () => {
+      const id = card.dataset.highlightId;
+      const item = highlightsData.find(h => h.id === id);
+      if (item) {
+        openHighlightModal(item);
+      }
+    });
+  });
+
+  grid.querySelectorAll('.highlight-watch').forEach(link => {
+  link.addEventListener('click', e => {
+    e.stopPropagation();
+  });
+});
+}
+
+  
+
+function openHighlightModal(item) {
+  const modal = document.getElementById('highlight-modal');
+  const body = document.getElementById('highlight-modal-body');
+  if (!modal || !body) return;
+
+  const ytId = item.platform === 'youtube' ? getYouTubeId(item.url) : null;
+  const embedUrl = ytId
+  ? `https://www.youtube-nocookie.com/embed/${ytId}?autoplay=1&origin=${window.location.origin}`
+  : item.url;
+
+  body.innerHTML = `
+    <h2>${item.title}</h2>
+    <div class="highlight-modal-meta">
+      <span>${item.game}</span>
+      <span>${item.date}</span>
+      <span>${item.duration}</span>
+    </div>
+
+    <div class="highlight-modal-video">
+      <iframe 
+    src="${embedUrl}" 
+    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+    referrerpolicy="strict-origin-when-cross-origin"
+    allowfullscreen>
+      </iframe>
+    </div>
+
+    <div class="highlight-modal-desc">
+      Смотреть момент без перехода с сайта. Оригинальная ссылка: 
+      <a href="${item.url}" target="_blank" rel="noopener">
+        открыть на ${item.platform === 'youtube' ? 'YouTube' : 'платформе'}
+      </a>
+    </div>
+  `;
+
+  modal.classList.remove('hidden');
+  modal.scrollIntoView({ behavior: 'smooth', block: 'center' });
+
+  const closeButton = modal.querySelector('.highlight-modal-close');
+  if (closeButton) closeButton.focus();
+}
+
+function closeHighlightModal() {
+  const modal = document.getElementById('highlight-modal');
+  if (!modal) return;
+  modal.classList.add('hidden');
+  // Останавливаем видео, сбросив src
+  const iframe = modal.querySelector('.highlight-modal-video iframe');
+  if (iframe) {
+    iframe.src = iframe.src;
+  }
+}
+
+// =========================
+// PLAYER PROFILE LOGIC
+// =========================
+
+const playersData = {
+  shintrix: {
+    id: 'shintrix',
+    nick: 'SHINTRIX',
+    realname: 'Тимофей "SHINTRIX" Ефимов',
+    role: 'AWP',
+    age: 17,
+    country: 'RUSSIA',
+    photo: 'images/TimofeyShintrix.png',
+    bio: 'Играет за Team Expoo с 2025 года. Снайпер команды, отвечает за открывающие фраги и контроль ключевых позиций.',
+    gear: {
+      mouse: 'XTRFY M8',
+      keyboard: 'HyperX Alloy FPS',
+      headset: 'HyperX Cloud II',
+      monitor: 'Zowie XL2546 (240Hz)',
+      mousepad: 'SteelSeries QcK+'
+    },
+    settings: {
+      dpi: 800,
+      sens: 1.2,
+      edpi: 960,
+      hz: 1000,
+      res: '1280x960',
+      aspect: '4:3 (Stretched)',
+      crosshair: 'CSGO-XXXX-XXXX-XXXX-XXXX-XXXX'
+    },
+    pc: {
+      cpu: 'Intel Core i5',
+      gpu: 'NVIDIA GTX 1660',
+      ram: '16GB DDR4 3200MHz',
+      storage: '1TB SSD',
+      mobo: 'MSI B560'
+    }
+  },
+
+  zelofa1n: {
+    id: 'zelofa1n',
+    nick: 'ZELOFA1N',
+    realname: 'Владислав "ZELOFA1N" Гумашев',
+    role: 'LURKER',
+    age: 17,
+    country: 'RUSSIA',
+    photo: 'images/ZELOFA1Nvlad.png',
+    bio: 'Луркер и клатч-машина. Умеет находить лазейки в защите соперника и закрывать раунды в меньшинстве.',
+    gear: {
+      mouse: 'Logitech G Pro X Superlight',
+      keyboard: 'Razer Huntsman Mini',
+      headset: 'Logitech G Pro X',
+      monitor: 'BenQ XL2411 (144Hz)',
+      mousepad: 'Zowie G-SR'
+    },
+    settings: {
+      dpi: 800,
+      sens: 1.0,
+      edpi: 800,
+      hz: 1000,
+      res: '1280x960',
+      aspect: '4:3 (Stretched)',
+      crosshair: 'CSGO-YYYY-YYYY-YYYY-YYYY-YYYY'
+    },
+    pc: {
+      cpu: 'Intel Core i5',
+      gpu: 'NVIDIA RTX 3050',
+      ram: '16GB DDR4 3200MHz',
+      storage: '512GB SSD',
+      mobo: 'ASUS B560'
+    }
+  },
+
+  dortiz: {
+    id: 'dortiz',
+    nick: 'DORTIZ',
+    realname: 'Эльнур "Nick" Мамбетов',
+    role: 'SUPPORT',
+    age: 12,
+    country: 'KAZAKHSTAN',
+    photo: 'images/KAZAKH.png',
+    bio: 'Саппорт, который всегда подстрахует тиммейтов флешками и гранатами. Делает грязную работу ради победы команды.',
+    gear: {
+      mouse: 'Razer DeathAdder V2',
+      keyboard: 'Redragon Kumara',
+      headset: 'HyperX Cloud Stinger',
+      monitor: 'AOC 144Hz',
+      mousepad: 'Logitech G240'
+    },
+    settings: {
+      dpi: 800,
+      sens: 1.4,
+      edpi: 1120,
+      hz: 1000,
+      res: '1280x1024',
+      aspect: '5:4',
+      crosshair: 'CSGO-ZZZZ-ZZZZ-ZZZZ-ZZZZ-ZZZZ'
+    },
+    pc: {
+      cpu: 'Ryzen 5 3600',
+      gpu: 'NVIDIA GTX 1650',
+      ram: '16GB DDR4 3200MHz',
+      storage: '1TB SSD',
+      mobo: 'Gigabyte B450'
+    }
+  },
+
+  sw1k: {
+    id: 'sw1k',
+    nick: 'SW1K',
+    realname: 'Богдан "SW1K" Важов',
+    role: 'IGL',
+    age: 16,
+    country: 'RUSSIA',
+    photo: 'images/Sw1kBOgdan.png',
+    bio: 'Ин-игровой лидер Team Expoo. Отвечает за тактики, тайминги и общее направление игры коллектива.',
+    gear: {
+      mouse: 'VGN VXE R1',
+      keyboard: 'REDSQUARE KEYROX TKL',
+      headset: 'MOONDROP CHU II',
+      monitor: 'REDMI G24 (180Hz)',
+      mousepad: 'NO NAME BIG'
+    },
+    settings: {
+      dpi: 1100,
+      sens: 1.25,
+      edpi: 1375,
+      hz: 1000,
+      res: '1280x960',
+      aspect: '4:3 (Stretched)',
+      crosshair: 'CSGO-KoKYK-eL4FP-Tj6db-Y9pAt-bciaB'
+    },
+    pc: {
+      cpu: 'INTEL',
+      gpu: 'NVIDIA GTX 1650',
+      ram: '16GB DDR4 3200MHz',
+      storage: '1TB SSD',
+      mobo: '?'
+    }
+  },
+
+  next_time: {
+    id: 'next_time',
+    nick: 'NEXT_TIME',
+    realname: 'Данил "NEXT_TIME" Марков',
+    role: 'ENTRY FRAGGER',
+    age: 15,
+    country: 'RUSSIA',
+    photo: 'images/DaniilNextTime.png',
+    bio: 'Энтри-фраггер, который первым врывается на плент и создаёт пространство для тиммейтов.',
+    gear: {
+      mouse: 'Zowie EC2',
+      keyboard: 'SteelSeries Apex 3',
+      headset: 'Razer BlackShark V2',
+      monitor: 'LG 144Hz',
+      mousepad: 'Zowie G-SR-SE'
+    },
+    settings: {
+      dpi: 800,
+      sens: 1.3,
+      edpi: 1040,
+      hz: 1000,
+      res: '1280x960',
+      aspect: '4:3 (Stretched)',
+      crosshair: 'CSGO-AAAA-AAAA-AAAA-AAAA-AAAA'
+    },
+    pc: {
+      cpu: 'Ryzen 5 2600',
+      gpu: 'NVIDIA GTX 1660 Super',
+      ram: '16GB DDR4 3000MHz',
+      storage: '1TB SSD',
+      mobo: 'ASRock B450'
+    }
+  }
+};
+
+function getQueryParam(name) {
+  const params = new URLSearchParams(window.location.search);
+  return params.get(name);
+}
+
+function initPlayerProfile() {
+  const page = document.body.dataset.page;
+  if (page !== 'profile') return;
+
+  let id = getQueryParam('id') || 'sw1k';
+  if (!playersData[id]) {
+    id = 'sw1k';
+  }
+
+  const p = playersData[id];
+
+  // header
+  const photoEl = document.getElementById('player-photo');
+  const roleEl = document.getElementById('player-role');
+  const nickEl = document.getElementById('player-nick');
+  const realnameEl = document.getElementById('player-realname');
+  const ageCountryEl = document.getElementById('player-age-country');
+  const bioEl = document.getElementById('player-bio');
+
+  if (photoEl) {
+    photoEl.src = p.photo;
+    photoEl.alt = p.nick;
+  }
+  if (roleEl) {
+    roleEl.textContent = p.role;
+  }
+  if (nickEl) {
+    nickEl.textContent = p.nick;
+  }
+  if (realnameEl) {
+    realnameEl.textContent = p.realname;
+  }
+  if (ageCountryEl) {
+    ageCountryEl.innerHTML = `AGE:&emsp; ${p.age} <br> COUNTRY:&emsp; ${p.country} <br>`;
+  }
+  if (bioEl) {
+    bioEl.textContent = p.bio;
+  }
+
+  // gear
+  const gear = p.gear;
+  const gearMap = {
+    'gear-mouse': gear.mouse,
+    'gear-keyboard': gear.keyboard,
+    'gear-headset': gear.headset,
+    'gear-monitor': gear.monitor,
+    'gear-mousepad': gear.mousepad
+  };
+  Object.entries(gearMap).forEach(([id, value]) => {
+    const el = document.getElementById(id);
+    if (el && value) el.textContent = value;
+  });
+
+  // settings
+  const s = p.settings;
+  const settingsMap = {
+    'set-dpi': s.dpi,
+    'set-sens': s.sens,
+    'set-edpi': s.edpi,
+    'set-hz': s.hz,
+    'set-res': s.res,
+    'set-aspect': s.aspect
+  };
+  Object.entries(settingsMap).forEach(([id, value]) => {
+    const el = document.getElementById(id);
+    if (el && value !== undefined) el.textContent = value;
+  });
+  const crosshairEl = document.getElementById('set-crosshair');
+  if (crosshairEl) {
+    crosshairEl.textContent = s.crosshair;
+  }
+
+  // pc specs
+  const pc = p.pc;
+  const pcMap = {
+    'pc-cpu': pc.cpu,
+    'pc-gpu': pc.gpu,
+    'pc-ram': pc.ram,
+    'pc-storage': pc.storage,
+    'pc-mobo': pc.mobo
+  };
+  Object.entries(pcMap).forEach(([id, value]) => {
+    const el = document.getElementById(id);
+    if (el && value) el.textContent = value;
+  });
+}
+
 window.addEventListener('DOMContentLoaded', () => {
   initLang();
   initMenu();
@@ -328,4 +780,10 @@ window.addEventListener('DOMContentLoaded', () => {
   if (document.body.dataset.page === 'news') {
     renderNews();
   }
+
+  if (document.body.dataset.page === 'highlights') {
+    renderHighlights();
+  }
+
+  initPlayerProfile();
 });
