@@ -7,6 +7,7 @@ const i18n = {
     "nav.news": "Новости",
     "nav.about": "О команде",
     "nav.contacts": "Контакты",
+    "nav.highlights": "Хайлайты",
     "lang.toggle": "RU",
 
     "home.hero.subtitle": "ЧРЕЗВЫЧАЙНО МОЩНАЯ ОРГАНИЗАЦИЯ",
@@ -39,6 +40,7 @@ const i18n = {
     "nav.news": "News",
     "nav.about": "About",
     "nav.contacts": "Contacts",
+    "nav.highlights": "Highlights",
     "lang.toggle": "EN",
 
     "home.hero.subtitle": "Extremely Powerful Organization",
@@ -194,6 +196,23 @@ const highlightsData = [
   }
 ];
 
+// MATCH CENTER (HOME)
+const matchCenterData = {
+  nextMatch: {
+    event: 'LTL LOW CUP',
+    format: 'BO3',
+    opponentTag: 'BPM',
+    opponentName: 'BMPM',
+    timeText: '20 марта • 21:00',
+    mapText: 'Map: ?, ?, ?'
+  },
+  lastResults: [
+    { opponent: 'Virtuos Team', event: 'PRAC', score: '2:0', status: 'win' },
+    { opponent: 'Wortex Esports', event: 'PRAC', score: '0:2', status: 'loss' },
+    { opponent: 'Echofall AC', event: 'RAZE CUP', score: '0:1', status: 'loss' }
+  ]
+};
+
 function getPlaceholderImage() {
   return 'data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%22200%22 height=%22120%22 viewBox=%220 0 200 120%22%3E%3Crect width=%22200%22 height=%22120%22 fill=%22%23030b14%22/%3E%3Ctext x=%2210%22 y=%2268%22 fill=%22%2388b6ff%22 font-family=%22Segoe UI%22 font-size=%2214%22%3ENo image%3C/text%3E%3C/svg%3E';
 }
@@ -227,6 +246,41 @@ function renderNews() {
       img.src = getPlaceholderImage();
     });
   });
+}
+
+function renderMatchCenter() {
+  if (document.body.dataset.page !== 'index') return;
+
+  const nextMeta = document.getElementById('mc-next-meta');
+  const nextVersus = document.getElementById('mc-next-versus');
+  const nextTime = document.getElementById('mc-next-time');
+  const nextMap = document.getElementById('mc-next-map');
+  const resultsList = document.getElementById('mc-results-list');
+
+  if (!nextMeta || !nextVersus || !nextTime || !nextMap || !resultsList) return;
+
+  nextMeta.textContent = `${matchCenterData.nextMatch.event} • ${matchCenterData.nextMatch.format}`;
+  nextTime.textContent = matchCenterData.nextMatch.timeText;
+  nextMap.textContent = matchCenterData.nextMatch.mapText;
+
+  // Update opponent tags/names inside vs block
+  const right = nextVersus.querySelector('.mc-team-right');
+  if (right) {
+    const tag = right.querySelector('.mc-team-tag');
+    const name = right.querySelector('.mc-team-name');
+    if (tag) tag.textContent = matchCenterData.nextMatch.opponentTag;
+    if (name) name.textContent = matchCenterData.nextMatch.opponentName;
+  }
+
+  resultsList.innerHTML = matchCenterData.lastResults.map(r => `
+    <div class="mc-result ${r.status}">
+      <div class="mc-result-main">
+        <div class="mc-result-title">TE vs ${r.opponent}</div>
+        <div class="mc-result-sub">${r.event}</div>
+      </div>
+      <div class="mc-result-score">${r.score}</div>
+    </div>
+  `).join('');
 }
 
 function getFeaturedMarkup(item) {
@@ -442,10 +496,10 @@ function renderHighlights() {
   });
 
   grid.querySelectorAll('.highlight-watch').forEach(link => {
-  link.addEventListener('click', e => {
-    e.stopPropagation();
+    link.addEventListener('click', e => {
+      e.stopPropagation();
+    });
   });
-});
 }
 
   
@@ -456,9 +510,36 @@ function openHighlightModal(item) {
   if (!modal || !body) return;
 
   const ytId = item.platform === 'youtube' ? getYouTubeId(item.url) : null;
+  const isFileProtocol = window.location.protocol === 'file:';
+
+  // IMPORTANT: YouTube embed часто ломается на file:// (origin = "null"), даём подсказку
+  if (isFileProtocol && ytId) {
+    body.innerHTML = `
+      <h2>${item.title}</h2>
+      <div class="highlight-modal-meta">
+        <span>${item.game}</span>
+        <span>${item.date}</span>
+        <span>${item.duration}</span>
+      </div>
+      <div class="highlight-modal-desc">
+        Плеер YouTube часто не работает, если сайт открыт как файл (<b>file://</b>).<br>
+        Решение: открой проект через локальный сервер (например, расширение <b>Live Server</b> в VS Code/Cursor) или загрузи на хостинг.
+        <br><br>
+        Сейчас можно открыть видео напрямую:
+        <a href="${item.url}" target="_blank" rel="noopener noreferrer">открыть на YouTube</a>
+      </div>
+    `;
+
+    modal.classList.remove('hidden');
+    modal.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    const closeButton = modal.querySelector('.highlight-modal-close');
+    if (closeButton) closeButton.focus();
+    return;
+  }
+
   const embedUrl = ytId
-  ? `https://www.youtube-nocookie.com/embed/${ytId}?autoplay=1&origin=${window.location.origin}`
-  : item.url;
+    ? `https://www.youtube-nocookie.com/embed/${ytId}?autoplay=1&rel=0`
+    : item.url;
 
   body.innerHTML = `
     <h2>${item.title}</h2>
@@ -469,12 +550,13 @@ function openHighlightModal(item) {
     </div>
 
     <div class="highlight-modal-video">
-      <iframe 
-    src="${embedUrl}" 
-    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-    referrerpolicy="strict-origin-when-cross-origin"
-    allowfullscreen>
-      </iframe>
+      <iframe
+        src="${embedUrl}"
+        allow="autoplay; encrypted-media; picture-in-picture"
+        referrerpolicy="strict-origin-when-cross-origin"
+        allowfullscreen
+        loading="lazy"
+      ></iframe>
     </div>
 
     <div class="highlight-modal-desc">
@@ -496,11 +578,8 @@ function closeHighlightModal() {
   const modal = document.getElementById('highlight-modal');
   if (!modal) return;
   modal.classList.add('hidden');
-  // Останавливаем видео, сбросив src
-  const iframe = modal.querySelector('.highlight-modal-video iframe');
-  if (iframe) {
-    iframe.src = iframe.src;
-  }
+  const body = document.getElementById('highlight-modal-body');
+  if (body) body.innerHTML = '';
 }
 
 // =========================
@@ -776,6 +855,7 @@ window.addEventListener('DOMContentLoaded', () => {
   initMenu();
   initReveal();
   initModalLogic();
+  renderMatchCenter();
 
   if (document.body.dataset.page === 'news') {
     renderNews();

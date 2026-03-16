@@ -26,9 +26,9 @@
             <a href="index.html" class="active" data-i18n="nav.home">Главная</a>
             <a href="roster.html" data-i18n="nav.roster">Состав</a>
             <a href="news.html" data-i18n="nav.news">Новости</a>
+            <a href="highlights.html" data-i18n="nav.highlights">Хайлайты</a>
             <a href="about.html" data-i18n="nav.about">О команде</a>
-            <a href="contacts.html" data-i18n="nav.contacts">Контакты</a>
-            <a href="highlights.html" data-i18n="nav.highlights">Медиа</a>
+            <a href="contacts.html" data-i18n="nav.contacts">Контакты</a>   
         </nav>
 
         <button class="lang-switch" type="button" aria-label="Toggle language">RU</button>
@@ -37,7 +37,7 @@
     <main>
         <section class="hero">
             <div class="hero-content">
-                <img src="expoologo.png" alt="EXPOO" class="hero-bg-logo">
+                <img src="images/expoologo.png" alt="EXPOO" class="hero-bg-logo">
                 <h1 class="main-title">TEAM EXPOO</h1>
                 <p class="subtitle" data-i18n="home.hero.subtitle">Extremely Powerful Organization</p>
                 
@@ -49,10 +49,59 @@
             </div>
         </section>
 
+        <section class="match-center">
+            <div class="match-center-inner">
+                <div class="mc-header">
+                    <h2 class="section-title mc-title">MATCH CENTER</h2>
+                    <div class="mc-actions">
+                        <a class="btn btn-primary" href="roster.html">Состав</a>
+                        <a class="btn btn-ghost" href="highlights.html">Хайлайты</a>
+                    </div>
+                </div>
+
+                <div class="mc-grid">
+                    <div class="mc-card mc-next">
+                        <div class="mc-card-top">
+                            <span class="mc-label">NEXT MATCH</span>
+                            <span class="mc-meta" id="mc-next-meta">LTL LOW CUP • BO1</span>
+                        </div>
+
+                        <div class="mc-versus" id="mc-next-versus">
+                            <div class="mc-team">
+                                <span class="mc-team-tag">TE</span>
+                                <span class="mc-team-name">Team Expoo</span>
+                            </div>
+                            <div class="mc-vs">VS</div>
+                            <div class="mc-team mc-team-right">
+                                <span class="mc-team-tag">BPM</span>
+                                <span class="mc-team-name">BMPM</span>
+                            </div>
+                        </div>
+
+                        <div class="mc-time">
+                            <span class="mc-time-main" id="mc-next-time">20 марта • 19:00</span>
+                            <span class="mc-time-sub" id="mc-next-map">Map: Mirage</span>
+                        </div>
+                    </div>
+
+                    <div class="mc-card mc-results">
+                        <div class="mc-card-top">
+                            <span class="mc-label">LAST RESULTS</span>
+                            <span class="mc-meta">Последние матчи</span>
+                        </div>
+
+                        <div class="mc-results-list" id="mc-results-list">
+                            <!-- render by script.js -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
         <section class="roster-section">
             <h2 class="section-title" data-i18n="home.section.roster">ACTIVE ROSTER</h2>
             <div class="roster-container">
-                <div class="player-card">
+                <a class="player-card" href="player-profile.html?id=shintrix" aria-label="SHINTRIX profile">
                     <div class="player-img-container">
                         <img src="images/TimofeyShintrix.png" alt="Player Silhouette" class="player-straight-img">
                     </div>
@@ -61,8 +110,8 @@
                         <span class="player-role">AWP</span>
                         <span class="player-nick">SHINTRIX</span>
                     </div>
-                </div>
-                <div class="player-card">
+                </a>
+                <a class="player-card" href="player-profile.html?id=zelofa1n" aria-label="ZELOFA1N profile">
                     <div class="player-img-container">
                         <img src="images/ZELOFA1Nvlad.png" alt="Player Silhouette" class="player-straight-img">
                     </div>
@@ -71,8 +120,8 @@
                         <span class="player-role">LURKER</span>
                         <span class="player-nick">ZELOFA1N</span>
                     </div>
-                </div>
-                <div class="player-card">
+                </a>
+                <a class="player-card" href="player-profile.html?id=dortiz" aria-label="DORTIZ profile">
                     <div class="player-img-container">
                         <img src="images/KAZAKH.png" alt="Player Silhouette" class="player-straight-img">
                     </div>
@@ -81,8 +130,8 @@
                         <span class="player-role">SUPPORT</span>
                         <span class="player-nick">DORTIZ</span>
                     </div>
-                </div>
-                <div class="player-card">
+                </a>
+                <a class="player-card" href="player-profile.html?id=sw1k" aria-label="SW1K profile">
                     <div class="player-img-container">
                         <img src="images/Sw1kBOgdan.png" alt="Player Silhouette" class="player-straight-img">
                     </div>
@@ -91,8 +140,8 @@
                         <span class="player-role">IGL</span>
                         <span class="player-nick">SW1K</span>
                     </div>
-                </div>
-                <div class="player-card">
+                </a>
+                <a class="player-card" href="player-profile.html?id=next_time" aria-label="NEXT_TIME profile">
                     <div class="player-img-container">
                         <img src="images/DaniilNextTime.png" alt="Player Silhouette" class="player-straight-img">
                     </div>
@@ -101,7 +150,7 @@
                         <span class="player-role">ENTRY</span>
                         <span class="player-nick">NEXT_TIME</span>
                     </div>
-                </div>
+                </a>
             </div>
         </section>
 
