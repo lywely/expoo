@@ -1,0 +1,32 @@
+{
+  "nextMatch": {
+    "event": "LTL LOW CUP",
+    "format": "BO3",
+    "opponentTag": "BPM",
+    "opponentName": "BMPM",
+    "timeText": "20 марта • 21:00",
+    "mapText": "Map: ?, ?, ?"
+  },
+  "lastResults": [
+    { "opponent": "Virtuos Team", "event": "PRAC", "score": "2:0", "status": "win" },
+    { "opponent": "Wortex Esports", "event": "PRAC", "score": "0:2", "status": "loss" },
+    { "opponent": "Echofall AC", "event": "RAZE CUP", "score": "0:1", "status": "loss" }
+  ],
+  "schedule": [
+    {
+      "id": "ltl-lowcup-bmpm-20260320",
+      "start": "2026-03-20T21:00:00+03:00",
+      "event": "LTL LOW CUP",
+      "format": "BO3",
+      "teamA": { "tag": "TE", "name": "Team Expoo" },
+      "teamB": { "tag": "BPM", "name": "BMPM" },
+      "status": "upcoming",
+      "maps": ["TBD", "TBD", "TBD"],
+      "links": {
+        "tournament": "",
+        "stream": "",
+        "vlog": ""
+      }
+    }
+  ]
+}

@@ -1,0 +1,57 @@
+[
+  {
+    "slug": "ltl-low-cup",
+    "tag": "TOURNAMENT",
+    "title": "TEAM EXPOO ПРИМЕТ УЧАСТИЕ НА LTL LOW CUP",
+    "date": "2026-03-14",
+    "image": "https://media.discordapp.net/attachments/859329714748129342/1482409437732802601/IMG_20260314_210541_411.jpg?ex=69b7819f&is=69b6301f&hm=dce8fc4bc6c4c75c1ce4ccb14978690926e50be8b7046a5caf7d88196d1e6184&=&format=webp",
+    "excerpt": "TE стала восьмой командой, которая зарегистрировалась на турнире. Матч стартует уже на следующей неделе.",
+    "contentHtml": "<p>Team Expoo официально подтверждает участие в LTL LOW CUP. Команда готовится к отборочным матчам и объявляет свой состав... (здесь можно добавить полный текст новости).</p>",
+    "featured": true
+  },
+  {
+    "slug": "wortex-loss",
+    "tag": "MATCH",
+    "title": "TE проигрывают WORTEX",
+    "date": "2026-03-10",
+    "image": "https://media.discordapp.net/attachments/859329714748129342/1481985361818419361/IMG_20260313_170017_706.jpg",
+    "excerpt": "Team Expoo проигрывают WORTEX Team со счётом 13:8. Команда готовится к реваншу.",
+    "contentHtml": "<p>После тяжёлого матча против WORTEX команда Team Expoo потерпела поражение 13:8. Главные выводы...</p>"
+  },
+  {
+    "slug": "semifinal-win",
+    "tag": "MATCH",
+    "title": "TE выигрывают Cancers и выходят в полуфинал",
+    "date": "2026-03-10",
+    "image": "https://media.discordapp.net/attachments/859329714748129342/1481985529661755453/IMG_20260313_170111_333.jpg",
+    "excerpt": "Team Expoo выигрывают Cancers со счетом 2:0 и проходят дальше в турнире.",
+    "contentHtml": "<p>Команда показала уверенную игру и прошла в полуфинал турнира. Лучшие моменты матча...</p>"
+  },
+  {
+    "slug": "raze-cup",
+    "tag": "ANNOUNCEMENT",
+    "title": "TEAM EXPOO ПРИМЕТ УЧАСТИЕ НА RAZE CUP SEASON 6",
+    "date": "2026-03-12",
+    "image": "https://media.discordapp.net/attachments/859329714748129342/1481985529661755453/IMG_20260313_170111_333.jpg",
+    "excerpt": "Команда зарегистрирована на RAZE CUP Season 6. Первый матч против Echofall AC.",
+    "contentHtml": "<p>Мы рады объявить, что Team Expoo примет участие в турнире RAZE CUP Season 6. Ниже расписание...</p>"
+  },
+  {
+    "slug": "new-player",
+    "tag": "ROSTER",
+    "title": "Dortiz присоединяется к TE",
+    "date": "2026-02-04",
+    "image": "images/KAZAKH.png",
+    "excerpt": "Встречайте нового игрока...",
+    "contentHtml": "<p>Новый игрок присоединяется к команде. Dortiz — молодой талант из Казахстана. Он будет выступать за TE в ближайших матчах.</p>"
+  },
+  {
+    "slug": "bracket-ltl",
+    "tag": "TOURNAMENT",
+    "title": "TE сыграют свой первый матч против BMPM",
+    "date": "2026-03-15",
+    "image": "https://media.discordapp.net/attachments/859329714748129342/1482676023253270559/IMG_20260315_144456_710.jpg?ex=69b7d126&is=69b67fa6&hm=1ea91924177358e887d06be55b115c9b21a0c47159f1b6cfb98e6ddd238c2254&=&format=webp",
+    "excerpt": "LTL представили сетку турнира. Первый матч против BMPM уже 20 марта.",
+    "contentHtml": "<p>LTL LOW CUP стартует 20 марта. TE сыграют свой первый матч против BMPM. Организаторы представили сетку турнира.</p>"
+  }
+]
