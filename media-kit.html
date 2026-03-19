@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Media Kit — TEAM EXPOO</title>
+    <meta name="description" content="Team Expoo Media Kit: brand assets, contacts, sponsor info.">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="TEAM EXPOO — Media Kit">
+    <meta property="og:description" content="Brand assets, contacts, sponsor info.">
+    <meta property="og:image" content="images/expoologo.png">
+    <link rel="icon" type="image/x-icon" href="images/expoologo.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;900&display=swap" rel="stylesheet">
+</head>
+<body data-page="media">
+
+    <div id="site-header"></div>
+
+    <main class="media-page">
+        <section class="page-hero">
+            <h1 class="page-title" data-i18n="media.hero.title">MEDIA KIT</h1>
+            <p class="page-subtitle" data-i18n="media.hero.subtitle">BRAND • SPONSORS • CONTACTS</p>
+        </section>
+
+        <section class="media-content">
+            <div class="media-grid">
+                <div class="media-card">
+                    <h2 class="media-h" data-i18n="media.section.assets.title">Brand assets</h2>
+                    <p class="media-p" data-i18n="media.section.assets.text">Логотипы и материалы для партнеров/медиа. (Сейчас — базовый набор. Можем расширить до полноценного brandbook.)</p>
+                    <div class="media-assets">
+                        <a class="media-asset" href="images/expoologo.png" download>
+                            <span class="media-asset-title">Logo (PNG)</span>
+                            <span class="media-asset-sub" data-i18n="ui.download">Download</span>
+                        </a>
+                        <a class="media-asset" href="images/expoologo.png" target="_blank" rel="noopener">
+                            <span class="media-asset-title">Logo preview</span>
+                            <span class="media-asset-sub" data-i18n="ui.open">Open</span>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="media-card">
+                    <h2 class="media-h" data-i18n="media.section.colors.title">Brand colors</h2>
+                    <p class="media-p" data-i18n="media.section.colors.text">Палитра проекта (можно вынести в отдельный JSON и автоматически обновлять).</p>
+                    <div class="media-colors">
+                        <div class="color-swatch">
+                            <div class="color-dot" style="background:#00A3FF"></div>
+                            <div class="color-meta">
+                                <div class="color-name">Accent Blue</div>
+                                <div class="color-hex">#00A3FF</div>
+                            </div>
+                        </div>
+                        <div class="color-swatch">
+                            <div class="color-dot" style="background:#0057FF"></div>
+                            <div class="color-meta">
+                                <div class="color-name">Deep Blue</div>
+                                <div class="color-hex">#0057FF</div>
+                            </div>
+                        </div>
+                        <div class="color-swatch">
+                            <div class="color-dot" style="background:#050505"></div>
+                            <div class="color-meta">
+                                <div class="color-name">Background</div>
+                                <div class="color-hex">#050505</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="media-card">
+                    <h2 class="media-h" data-i18n="media.section.sponsors.title">For sponsors</h2>
+                    <p class="media-p" data-i18n="media.section.sponsors.text">Коротко: что можно купить/сделать с командой. Это “скелет” — дальше можно заполнить цифрами и пакетами.</p>
+                    <ul class="media-list">
+                        <li>Logo placement (site / jerseys / overlays)</li>
+                        <li>Content integration (highlights, reels, interviews)</li>
+                        <li>Event support (bootcamp, LAN, online cups)</li>
+                        <li>Community activations (giveaways, collabs)</li>
+                    </ul>
+                </div>
+
+                <div class="media-card">
+                    <h2 class="media-h" data-i18n="media.section.contacts.title">Contacts</h2>
+                    <p class="media-p" data-i18n="media.section.contacts.text">Для партнерств и медиа-запросов:</p>
+                    <div class="media-contacts">
+                        <div class="media-contact-row">
+                            <span class="media-k">Email</span>
+                            <span class="media-v">teamexpooru@gmail.com</span>
+                        </div>
+                        <div class="media-contact-row">
+                            <span class="media-k">Telegram</span>
+                            <span class="media-v">@ExpooTeam</span>
+                        </div>
+                    </div>
+                    <div style="margin-top:14px; display:flex; gap:10px; flex-wrap:wrap;">
+                        <a class="btn btn-primary" href="contacts.html" data-i18n="media.cta.write">Написать</a>
+                        <a class="btn btn-ghost" href="https://t.me/ExpooTeam" target="_blank" rel="noopener">Telegram</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <div id="site-footer"></div>
+
+    <script src="script.js" defer></script>
+</body>
+</html>
+

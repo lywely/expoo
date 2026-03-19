@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Matches — TEAM EXPOO</title>
+    <meta name="description" content="Team Expoo match schedule and latest results. Add matches to your calendar.">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="TEAM EXPOO — Matches">
+    <meta property="og:description" content="Schedule & results. Add matches to calendar.">
+    <meta property="og:image" content="images/expoologo.png">
+    <link rel="icon" type="image/x-icon" href="images/expoologo.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;900&display=swap" rel="stylesheet">
+</head>
+<body data-page="matches">
+
+    <div id="site-header"></div>
+
+    <main class="matches-page">
+        <section class="page-hero">
+            <h1 class="page-title" data-i18n="matches.hero.title">MATCHES</h1>
+            <p class="page-subtitle" data-i18n="matches.hero.subtitle">SCHEDULE & RESULTS</p>
+        </section>
+
+        <section class="matches-content">
+            <div class="matches-grid">
+                <div class="matches-panel">
+                    <div class="matches-panel-head">
+                        <h2 class="matches-title" data-i18n="matches.schedule.title">SCHEDULE</h2>
+                        <p class="matches-sub" data-i18n="matches.schedule.subtitle">Ближайшие матчи Team Expoo</p>
+                    </div>
+                    <div id="matches-schedule" class="matches-list" aria-label="Schedule"></div>
+                </div>
+
+                <div class="matches-panel">
+                    <div class="matches-panel-head">
+                        <h2 class="matches-title" data-i18n="matches.results.title">RESULTS</h2>
+                        <p class="matches-sub" data-i18n="matches.results.subtitle">Последние результаты</p>
+                    </div>
+                    <div id="matches-results" class="matches-list" aria-label="Results"></div>
+                </div>
+            </div>
+
+            <div id="match-modal" class="news-modal hidden" role="dialog" aria-modal="true">
+                <div class="news-modal-backdrop" data-close="true"></div>
+                <div class="news-modal-content">
+                    <button class="news-modal-close" data-close="true" aria-label="Close">×</button>
+                    <div class="news-modal-body" id="match-modal-body"></div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <div id="site-footer"></div>
+
+    <script src="script.js" defer></script>
+</body>
+</html>
+
