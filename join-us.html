@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JOIN TEAM EXPOO</title>
+    <meta name="description" content="Apply to join Team Expoo as a player, coach, analyst or manager.">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="TEAM EXPOO - Join Us">
+    <meta property="og:description" content="Apply to join Team Expoo.">
+    <meta property="og:image" content="images/expoologo.png">
+    <link rel="icon" type="image/x-icon" href="images/expoologo.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;900&display=swap" rel="stylesheet">
+</head>
+<body data-page="join">
+    <div id="site-header"></div>
+
+    <main class="join-page">
+        <section class="page-hero">
+            <h1 class="page-title" data-i18n="join.hero.title">JOIN TEAM EXPOO</h1>
+            <p class="page-subtitle" data-i18n="join.hero.subtitle">PLAYER APPLICATION</p>
+        </section>
+
+        <section class="join-content">
+            <div class="join-grid">
+                <aside class="join-info">
+                    <h2 class="join-info-title" data-i18n="join.requirements.title">WHAT WE EXPECT</h2>
+                    <ul class="join-req-list">
+                        <li data-i18n="join.requirements.2">Discipline, communication and team mindset</li>
+                        <li data-i18n="join.requirements.4">Ready for practices and official matches</li>
+                    </ul>
+
+                    <div class="join-open-roles">
+                        <h3 data-i18n="join.roles.title">OPEN ROLES</h3>
+                        <div class="join-role-tags">
+                            <span>AWP</span>
+                            <span>RIFLER</span>
+                            <span>COACH</span>
+                        </div>
+                    </div>
+
+                    <p class="join-process" data-i18n="join.process">
+                        Usually we review applications within 3-7 days.
+                    </p>
+                </aside>
+
+                <section class="join-form-wrap">
+                    <h2 class="join-form-title" data-i18n="join.form.title">APPLICATION FORM</h2>
+                    <p class="join-form-sub" data-i18n="join.form.subtitle">
+                        Fill all fields. The more specific your info is, the faster we can evaluate your application.
+                    </p>
+
+                    <form
+                        id="joinForm"
+                        class="join-form"
+                        data-endpoint="https://formspree.io/f/mjgpvknl"
+                        novalidate
+                    >
+                        <div class="join-form-grid">
+                            <div class="form-group">
+                                <label for="join-name" data-i18n="join.form.name">Name</label>
+                                <input type="text" id="join-name" name="name" autocomplete="name" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="join-age" data-i18n="join.form.age">Age</label>
+                                <input type="number" id="join-age" name="age" min="10" max="50" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="join-nick" data-i18n="join.form.nick">In-game nickname</label>
+                                <input type="text" id="join-nick" name="nickname" autocomplete="off" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="join-role" data-i18n="join.form.role">Main role</label>
+                                <select id="join-role" name="role" required>
+                                    <option value="">--</option>
+                                    <option value="AWP">AWP</option>
+                                    <option value="Rifler">Rifler</option>
+                                    <option value="Entry">Entry</option>
+                                    <option value="Support">Support</option>
+                                    <option value="Lurker">Lurker</option>
+                                    <option value="IGL">IGL</option>
+                                    <option value="Coach">Coach</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="join-country" data-i18n="join.form.country">Country / Timezone</label>
+                                <input type="text" id="join-country" name="country_timezone" placeholder="RU, UTC+3" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="join-faceit" data-i18n="join.form.faceit">Faceit level / ELO</label>
+                                <input type="text" id="join-faceit" name="faceit" autocomplete="off" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="join-telegram" data-i18n="join.form.telegram">Telegram</label>
+                                <input type="text" id="join-telegram" name="telegram" placeholder="@username" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="join-steam" data-i18n="join.form.steam">Steam profile URL</label>
+                                <input type="url" id="join-steam" name="steam_url" placeholder="https://steamcommunity.com/id/..." required>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="join-about" data-i18n="join.form.about">Why do you want to join EXPOO?</label>
+                            <textarea id="join-about" name="about" rows="4" required></textarea>
+                        </div>
+
+                        <input type="text" name="_gotcha" tabindex="-1" autocomplete="off" class="join-hp" aria-hidden="true">
+
+                        <label class="join-consent">
+                            <input type="checkbox" id="join-consent" required>
+                            <span data-i18n="join.form.consent">I agree to processing this application for team tryout contact.</span>
+                        </label>
+
+                        <button type="submit" class="submit-btn" data-i18n="join.form.submit">Send application</button>
+                    </form>
+
+                    <div class="join-draft" id="join-draft" hidden>
+                        <h3 data-i18n="join.draft.title">Application draft</h3>
+                        <p data-i18n="join.draft.subtitle">
+                            Direct sending is not configured yet. Copy this text and send it to our Telegram.
+                        </p>
+                        <textarea id="join-draft-text" rows="10" readonly></textarea>
+                        <div class="join-draft-actions">
+                            <button type="button" class="btn btn-primary" id="join-copy" data-i18n="join.draft.copy">Copy text</button>
+                            <a class="btn btn-ghost" href="https://t.me/ExpooTeam" target="_blank" rel="noopener" data-i18n="join.draft.open">Open Telegram</a>
+                        </div>
+                    </div>
+
+                    <div class="join-success" id="join-success" hidden aria-live="polite">
+                        <h3 data-i18n="join.success.title">Application sent</h3>
+                        <p data-i18n="join.success.subtitle">
+                            Thank you! We received your application and will contact you in Telegram if you move to the next stage.
+                        </p>
+                        <button type="button" class="btn btn-primary" id="join-reset" data-i18n="join.success.reset">Send another application</button>
+                    </div>
+                </section>
+            </div>
+        </section>
+    </main>
+
+    <div id="site-footer"></div>
+    <script src="script.js" defer></script>
+</body>
+</html>

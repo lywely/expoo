@@ -10,6 +10,7 @@ const i18n = {
     "nav.contacts": "Контакты",
     "nav.highlights": "Хайлайты",
     "nav.media": "Медиа Кит",
+    "nav.join": "В команду",
     "lang.toggle": "RU",
 
     "home.hero.subtitle": "ЧРЕЗВЫЧАЙНО МОЩНАЯ ОРГАНИЗАЦИЯ",
@@ -38,6 +39,38 @@ const i18n = {
     "contacts.hero.title": "КОНТАКТЫ",
     "contacts.hero.subtitle": "СВЯЖИТЕСЬ С НАМИ",
     "contacts.section.send": "ОТПРАВЬТЕ НАМ СООБЩЕНИЕ",
+
+    "join.hero.title": "JOIN TEAM EXPOO",
+    "join.hero.subtitle": "ЗАЯВКА В КОМАНДУ",
+    "join.requirements.title": "ЧТО МЫ ЖДЕМ",
+    "join.requirements.1": "16+ лет и стабильный онлайн по прайм-тайму",
+    "join.requirements.2": "Дисциплина, коммуникация и командный майндсет",
+    "join.requirements.3": "Релевантный опыт в CS2 и ссылки на демки",
+    "join.requirements.4": "Готовность к пракам и официальным матчам",
+    "join.roles.title": "ОТКРЫТЫЕ РОЛИ",
+    "join.process": "Обычно мы рассматриваем заявки в течение 3-7 дней.",
+    "join.form.title": "АНКЕТА КАНДИДАТА",
+    "join.form.subtitle": "Заполни все поля. Чем точнее информация, тем быстрее мы оценим заявку.",
+    "join.form.name": "Имя",
+    "join.form.age": "Возраст",
+    "join.form.nick": "Игровой ник",
+    "join.form.role": "Основная роль",
+    "join.form.country": "Страна / Часовой пояс",
+    "join.form.faceit": "Faceit уровень / ELO",
+    "join.form.telegram": "Telegram",
+    "join.form.steam": "Ссылка на профиль Steam",
+    "join.form.exp": "Опыт в командах",
+    "join.form.links": "Ссылки на демки/хайлайты",
+    "join.form.about": "Почему хочешь в EXPOO?",
+    "join.form.consent": "Я согласен на обработку анкеты для связи по поводу просмотра в команду.",
+    "join.form.submit": "Отправить заявку",
+    "join.draft.title": "Черновик заявки",
+    "join.draft.subtitle": "Прямая отправка пока не настроена. Скопируй текст и отправь нам в Telegram.",
+    "join.draft.copy": "Скопировать текст",
+    "join.draft.open": "Открыть Telegram",
+    "join.success.title": "Заявка отправлена",
+    "join.success.subtitle": "Спасибо! Мы получили твою анкету и свяжемся с тобой в Telegram, если ты пройдешь в следующий этап.",
+    "join.success.reset": "Отправить еще одну заявку",
 
     "profile.section.bio": "БИОГРАФИЯ",
     "profile.section.gear": "GAMING GEAR",
@@ -89,6 +122,7 @@ const i18n = {
     "nav.contacts": "Contacts",
     "nav.highlights": "Highlights",
     "nav.media": "Media Kit",
+    "nav.join": "Join Us",
     "lang.toggle": "EN",
 
     "home.hero.subtitle": "Extremely Powerful Organization",
@@ -117,6 +151,38 @@ const i18n = {
     "contacts.hero.title": "CONTACTS",
     "contacts.hero.subtitle": "GET IN TOUCH WITH US",
     "contacts.section.send": "SEND US A MESSAGE",
+
+    "join.hero.title": "JOIN TEAM EXPOO",
+    "join.hero.subtitle": "PLAYER APPLICATION",
+    "join.requirements.title": "WHAT WE EXPECT",
+    "join.requirements.1": "16+ years old and stable online schedule",
+    "join.requirements.2": "Discipline, communication and team mindset",
+    "join.requirements.3": "Relevant CS2 experience and demo links",
+    "join.requirements.4": "Ready for practices and official matches",
+    "join.roles.title": "OPEN ROLES",
+    "join.process": "Usually we review applications within 3-7 days.",
+    "join.form.title": "APPLICATION FORM",
+    "join.form.subtitle": "Fill all fields. The more specific your info is, the faster we can evaluate your application.",
+    "join.form.name": "Name",
+    "join.form.age": "Age",
+    "join.form.nick": "In-game nickname",
+    "join.form.role": "Main role",
+    "join.form.country": "Country / Timezone",
+    "join.form.faceit": "Faceit level / ELO",
+    "join.form.telegram": "Telegram",
+    "join.form.steam": "Steam profile URL",
+    "join.form.exp": "Team experience",
+    "join.form.links": "Demo/highlight links",
+    "join.form.about": "Why do you want to join EXPOO?",
+    "join.form.consent": "I agree to processing this application for team tryout contact.",
+    "join.form.submit": "Send application",
+    "join.draft.title": "Application draft",
+    "join.draft.subtitle": "Direct sending is not configured yet. Copy this text and send it to our Telegram.",
+    "join.draft.copy": "Copy text",
+    "join.draft.open": "Open Telegram",
+    "join.success.title": "Application sent",
+    "join.success.subtitle": "Thank you! We received your application and will contact you in Telegram if you move to the next stage.",
+    "join.success.reset": "Send another application",
 
     "profile.section.bio": "BIOGRAPHY",
     "profile.section.gear": "GAMING GEAR",
@@ -175,6 +241,7 @@ function getNavItems() {
     { href: 'highlights.html', key: 'nav.highlights', id: 'highlights' },
     { href: 'about.html', key: 'nav.about', id: 'about' },
     { href: 'media-kit.html', key: 'nav.media', id: 'media' },
+    { href: 'join-us.html', key: 'nav.join', id: 'join' },
     { href: 'contacts.html', key: 'nav.contacts', id: 'contacts' },
   ];
 }
@@ -1292,6 +1359,141 @@ ${msg}
   });
 }
 
+function validateJoinFormData(data) {
+  const required = [
+    'name', 'age', 'nickname', 'role', 'country_timezone',
+    'faceit', 'telegram', 'steam_url', 'experience', 'links', 'about'
+  ];
+  return required.every((key) => String(data[key] || '').trim().length > 0);
+}
+
+function buildJoinDraftText(data) {
+  return (
+`TEAM EXPOO - Join Us Application
+
+Name: ${data.name}
+Age: ${data.age}
+Nickname: ${data.nickname}
+Role: ${data.role}
+Country/Timezone: ${data.country_timezone}
+Faceit: ${data.faceit}
+Telegram: ${data.telegram}
+Steam: ${data.steam_url}
+
+Team experience:
+${data.experience}
+
+Demo/highlight links:
+${data.links}
+
+Why EXPOO:
+${data.about}
+`
+  );
+}
+
+async function sendJoinApplication(endpoint, data) {
+  const response = await fetch(endpoint, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      'Accept': 'application/json'
+    },
+    body: JSON.stringify(data)
+  });
+  return response.ok;
+}
+
+function initJoinUs() {
+  if (document.body.dataset.page !== 'join') return;
+
+  const form = document.getElementById('joinForm');
+  const draft = document.getElementById('join-draft');
+  const draftText = document.getElementById('join-draft-text');
+  const copyBtn = document.getElementById('join-copy');
+  const consent = document.getElementById('join-consent');
+  const successBox = document.getElementById('join-success');
+  const resetBtn = document.getElementById('join-reset');
+  if (!form || !draft || !draftText || !copyBtn || !consent || !successBox || !resetBtn) return;
+
+  const endpoint = String(form.dataset.endpoint || '').trim();
+  if (endpoint) {
+    draft.hidden = true;
+  }
+
+  form.addEventListener('submit', async (event) => {
+    event.preventDefault();
+
+    const fd = new FormData(form);
+    const botTrap = String(fd.get('_gotcha') || '').trim();
+    if (botTrap) return;
+    if (!consent.checked) {
+      showToast('Подтверди согласие перед отправкой.');
+      return;
+    }
+
+    const payload = {
+      name: String(fd.get('name') || '').trim(),
+      age: String(fd.get('age') || '').trim(),
+      nickname: String(fd.get('nickname') || '').trim(),
+      role: String(fd.get('role') || '').trim(),
+      country_timezone: String(fd.get('country_timezone') || '').trim(),
+      faceit: String(fd.get('faceit') || '').trim(),
+      telegram: normalizeTelegramHandle(fd.get('telegram')),
+      steam_url: String(fd.get('steam_url') || '').trim(),
+      experience: String(fd.get('experience') || '').trim(),
+      links: String(fd.get('links') || '').trim(),
+      about: String(fd.get('about') || '').trim()
+    };
+
+    if (!validateJoinFormData(payload)) {
+      showToast('Заполни все поля формы.');
+      return;
+    }
+
+    const draftMessage = buildJoinDraftText(payload);
+    draftText.value = draftMessage;
+
+    if (endpoint) {
+      try {
+        const ok = await sendJoinApplication(endpoint, payload);
+        if (ok) {
+          form.reset();
+          draft.hidden = true;
+          successBox.hidden = false;
+          successBox.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          showToast('Заявка отправлена. Спасибо!');
+          return;
+        }
+      } catch {
+        // Fallback to draft mode below
+      }
+    }
+
+    draft.hidden = false;
+    successBox.hidden = true;
+    draft.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    showToast('Черновик готов: скопируй и отправь в Telegram.');
+  });
+
+  copyBtn.addEventListener('click', async () => {
+    try {
+      await navigator.clipboard.writeText(draftText.value || '');
+      showToast('Текст заявки скопирован.');
+    } catch {
+      draftText.focus();
+      draftText.select();
+      document.execCommand?.('copy');
+      showToast('Скопировано через выделение.');
+    }
+  });
+
+  resetBtn.addEventListener('click', () => {
+    successBox.hidden = true;
+    form.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  });
+}
+
 // HIGHLIGHTS HELPERS + RENDER
 function getYouTubeId(url) {
   if (!url) return null;
@@ -1610,6 +1812,40 @@ let playersData = {
     }
   },
 
+  wedding: {
+    id: 'wedding',
+    nick: 'WEDDING',
+    realname: 'Валерий "wedding" Афанасьев',
+    role: 'SUPPORT',
+    age: 12,
+    country: 'RUSSIA',
+    photo: 'images/KAZAKH.png',
+    bio: 'Саппорт, который всегда подстрахует тиммейтов флешками и гранатами. Делает грязную работу ради победы команды.',
+    gear: {
+      mouse: 'Razer DeathAdder V2',
+      keyboard: 'Redragon Kumara',
+      headset: 'HyperX Cloud Stinger',
+      monitor: 'AOC 144Hz',
+      mousepad: 'Logitech G240'
+    },
+    settings: {
+      dpi: 800,
+      sens: 1.4,
+      edpi: 1120,
+      hz: 1000,
+      res: '1280x1024',
+      aspect: '5:4',
+      crosshair: 'CSGO-ZZZZ-ZZZZ-ZZZZ-ZZZZ-ZZZZ'
+    },
+    pc: {
+      cpu: 'Ryzen 5 3600',
+      gpu: 'NVIDIA GTX 1650',
+      ram: '16GB DDR4 3200MHz',
+      storage: '1TB SSD',
+      mobo: 'Gigabyte B450'
+    }
+  },
+
   sw1k: {
     id: 'sw1k',
     nick: 'SW1K',
@@ -1863,28 +2099,29 @@ window.addEventListener('DOMContentLoaded', () => {
   initReveal();
   initModalLogic();
   initContacts();
+  initJoinUs();
   initHeroVideo();
   initScrollProgress();
   initCursorGlow();
   // Data loading happens first; render after
   (async () => {
     await initDataLayer();
-    renderMatchCenter();
+  renderMatchCenter();
 
-    if (document.body.dataset.page === 'news') {
-      renderNews();
-    }
+  if (document.body.dataset.page === 'news') {
+    renderNews();
+  }
 
-    if (document.body.dataset.page === 'highlights') {
-      renderHighlights();
+  if (document.body.dataset.page === 'highlights') {
+    renderHighlights();
       initHighlightsFilters();
     }
 
     if (document.body.dataset.page === 'matches') {
       renderMatchesPage();
-    }
+  }
 
-    initPlayerProfile();
+  initPlayerProfile();
     initRosterPage();
   })();
 });

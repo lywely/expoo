@@ -1,0 +1,167 @@
+[
+  {
+    "id": "shintrix",
+    "nick": "SHINTRIX",
+    "realname": "Тимофей \"SHINTRIX\" Ефимов",
+    "role": "AWP",
+    "age": 17,
+    "country": "RUSSIA",
+    "photo": "images/TimofeyShintrix.png",
+    "bio": "Играет за Team Expoo с 2025 года. Снайпер команды, отвечает за открывающие фраги и контроль ключевых позиций.",
+    "gear": {
+      "mouse": "XTRFY M8",
+      "keyboard": "HyperX Alloy FPS",
+      "headset": "HyperX Cloud II",
+      "monitor": "Zowie XL2546 (240Hz)",
+      "mousepad": "SteelSeries QcK+"
+    },
+    "settings": {
+      "dpi": 800,
+      "sens": 1.2,
+      "edpi": 960,
+      "hz": 1000,
+      "res": "1280x960",
+      "aspect": "4:3 (Stretched)",
+      "crosshair": "CSGO-XXXX-XXXX-XXXX-XXXX-XXXX"
+    },
+    "pc": {
+      "cpu": "Intel Core i5",
+      "gpu": "NVIDIA GTX 1660",
+      "ram": "16GB DDR4 3200MHz",
+      "storage": "1TB SSD",
+      "mobo": "MSI B560"
+    }
+  },
+  {
+    "id": "zelofa1n",
+    "nick": "ZELOFA1N",
+    "realname": "Владислав \"ZELOFA1N\" Гумашев",
+    "role": "LURKER",
+    "age": 17,
+    "country": "RUSSIA",
+    "photo": "images/ZELOFA1Nvlad.png",
+    "bio": "Луркер и клатч-машина. Умеет находить лазейки в защите соперника и закрывать раунды в меньшинстве.",
+    "gear": {
+      "mouse": "Logitech G Pro X Superlight",
+      "keyboard": "Razer Huntsman Mini",
+      "headset": "Logitech G Pro X",
+      "monitor": "BenQ XL2411 (144Hz)",
+      "mousepad": "Zowie G-SR"
+    },
+    "settings": {
+      "dpi": 800,
+      "sens": 1.0,
+      "edpi": 800,
+      "hz": 1000,
+      "res": "1280x960",
+      "aspect": "4:3 (Stretched)",
+      "crosshair": "CSGO-YYYY-YYYY-YYYY-YYYY-YYYY"
+    },
+    "pc": {
+      "cpu": "Intel Core i5",
+      "gpu": "NVIDIA RTX 3050",
+      "ram": "16GB DDR4 3200MHz",
+      "storage": "512GB SSD",
+      "mobo": "ASUS B560"
+    }
+  },
+  {
+    "id": "wedding",
+    "nick": "wedding",
+    "realname": "Валерий \"Nick\" Афанасьев",
+    "role": "SUPPORT",
+    "age": 12,
+    "country": "RUSSIA",
+    "photo": "images/player_silhouette.png",
+    "bio": "Саппорт, который всегда подстрахует тиммейтов флешками и гранатами. Делает грязную работу ради победы команды.",
+    "gear": {
+      "mouse": "Razer DeathAdder V2",
+      "keyboard": "Redragon Kumara",
+      "headset": "HyperX Cloud Stinger",
+      "monitor": "AOC 144Hz",
+      "mousepad": "Logitech G240"
+    },
+    "settings": {
+      "dpi": 800,
+      "sens": 1.4,
+      "edpi": 1120,
+      "hz": 1000,
+      "res": "1280x1024",
+      "aspect": "5:4",
+      "crosshair": "CSGO-ZZZZ-ZZZZ-ZZZZ-ZZZZ-ZZZZ"
+    },
+    "pc": {
+      "cpu": "Ryzen 5 3600",
+      "gpu": "NVIDIA GTX 1650",
+      "ram": "16GB DDR4 3200MHz",
+      "storage": "1TB SSD",
+      "mobo": "Gigabyte B450"
+    }
+  }, 
+  {
+    "id": "sw1k",
+    "nick": "sw1k",
+    "realname": "Богдан \"SW1K\" Важов",
+    "role": "IGL",
+    "age": 16,
+    "country": "RUSSIA",
+    "photo": "images/Sw1kBOgdan.png",
+    "bio": "Ин-игровой лидер Team Expoo. Отвечает за тактики, тайминги и общее направление игры коллектива.",
+    "gear": {
+      "mouse": "VGN VXE R1",
+      "keyboard": "REDSQUARE KEYROX TKL",
+      "headset": "MOONDROP CHU II",
+      "monitor": "REDMI G24 (180Hz)",
+      "mousepad": "NO NAME BIG"
+    },
+    "settings": {
+      "dpi": 1100,
+      "sens": 1.25,
+      "edpi": 1375,
+      "hz": 1000,
+      "res": "1280x960",
+      "aspect": "4:3 (Stretched)",
+      "crosshair": "CSGO-KoKYK-eL4FP-Tj6db-Y9pAt-bciaB"
+    },
+    "pc": {
+      "cpu": "INTEL",
+      "gpu": "NVIDIA GTX 1650",
+      "ram": "16GB DDR4 3200MHz",
+      "storage": "1TB SSD",
+      "mobo": "?"
+    }
+  },
+  {
+    "id": "next_time",
+    "nick": "NEXT_TIME",
+    "realname": "Данил \"NEXT_TIME\" Марков",
+    "role": "ENTRY FRAGGER",
+    "age": 15,
+    "country": "RUSSIA",
+    "photo": "images/DaniilNextTime.png",
+    "bio": "Энтри-фраггер, который первым врывается на плент и создаёт пространство для тиммейтов.",
+    "gear": {
+      "mouse": "Zowie EC2",
+      "keyboard": "SteelSeries Apex 3",
+      "headset": "Razer BlackShark V2",
+      "monitor": "LG 144Hz",
+      "mousepad": "Zowie G-SR-SE"
+    },
+    "settings": {
+      "dpi": 800,
+      "sens": 1.3,
+      "edpi": 1040,
+      "hz": 1000,
+      "res": "1280x960",
+      "aspect": "4:3 (Stretched)",
+      "crosshair": "CSGO-AAAA-AAAA-AAAA-AAAA-AAAA"
+    },
+    "pc": {
+      "cpu": "Ryzen 5 2600",
+      "gpu": "NVIDIA GTX 1660 Super",
+      "ram": "16GB DDR4 3000MHz",
+      "storage": "1TB SSD",
+      "mobo": "ASRock B450"
+    }
+  }
+]
